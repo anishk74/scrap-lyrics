@@ -18,15 +18,13 @@ driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver",options=optio
 
 driver.get(searchSong)
 
-driver.implicitly_wait(20)
-
 try:
 	expand=driver.find_element_by_css_selector("div[aria-expanded='false']")
 	driver.execute_script("document.querySelectorAll('div[aria-expanded=false]')[1].click()")
 	driver.execute_script("arguments[0].setAttribute('area-expanded','true')", expand)
-	driver.implicitly_wait(20)
+
 	e1=driver.find_element_by_class_name("bkWMgd")
-	lyrics=e1.get_attribute('textContent')
+
 	print(e1.text)
 except:
 	print('Couldn\'t find lyrics')
